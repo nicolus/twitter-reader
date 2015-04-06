@@ -10,9 +10,17 @@ class TwitterClient
     protected $client;
 
     public function __construct ($credentials){
-        $client = new Client(['base_url' => 'https://api.twitter.com', 'defaults' => ['auth' => 'oauth']]);
+        $this->client = new Client(['base_url' => 'https://api.twitter.com/1.1/', 'defaults' => ['auth' => 'oauth']]);
         $oauth = new Oauth1($credentials);
-        $client->getEmitter()->attach($oauth);
+        $this->client->getEmitter()->attach($oauth);
+    }
+
+    public function getTweetsByUser($user){
+        $res = $this->client->get('statuses/user_timeline.json', [
+            'query' => ['screen_name' => $user]
+        ]);
+
+        return $res->json();
     }
 
 }
