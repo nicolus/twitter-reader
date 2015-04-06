@@ -1,0 +1,17 @@
+
+
+{
+  "name": "nicolus/twitter-client",
+  "description": "A VERY simple read only Twitter Client ",
+  "require": {
+    "php": ">=5.4.0",
+    "guzzlehttp/guzzle": "~5.2",
+    "guzzlehttp/oauth-subscriber": "0.2.*"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "TwitterClient\\": "src/TwitterClient"
+    }
+  }
+}
